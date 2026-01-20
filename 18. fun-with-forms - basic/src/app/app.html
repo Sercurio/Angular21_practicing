@@ -1,0 +1,67 @@
+<div class="form">
+  <h3>Dinner Review Form</h3>
+  <div class="field">
+    <label>Username:</label>
+    <input
+      type="text"
+      [field]="reviewModel.username"
+      [class.invalid]="reviewModel.username().invalid() && reviewModel.username().touched()"
+    />
+    @for (err of reviewModel.username().errors(); track err.kind) {
+      <span class="error">{{ err.message }}</span>
+    }
+  </div>
+  <div class="field">
+    <label>Role:</label>
+    <select
+      [field]="reviewModel.role"
+      [class.invalid]="reviewModel.role().invalid() && reviewModel.role().touched()"
+    >
+      <option value="user">User</option>
+      <option value="author">Author</option>
+      <option value="chef">Chef</option>
+    </select>
+    @for (err of reviewModel.role().errors(); track err.kind) {
+      <span class="error">{{ err.message }}</span>
+    }
+  </div>
+  <div class="field">
+    <label>Email:</label>
+    <input
+      type="email"
+      [field]="reviewModel.email"
+      [class.invalid]="reviewModel.email().invalid() && reviewModel.email().touched()"
+    />
+    @for (err of reviewModel.email().errors(); track err.kind) {
+      <span class="error">{{ err.message }}</span>
+    }
+  </div>
+  <div class="field">
+    <label>Description:</label>
+    <textarea
+      [field]="reviewModel.description"
+      [class.invalid]="reviewModel.description().invalid() && reviewModel.description().touched()"
+    ></textarea>
+  </div>
+  @for (err of reviewModel.description().errors(); track err.kind) {
+    <span class="error">{{ err.message }}</span>
+  }
+  <div class="field">
+    <label>Rating:</label>
+    <input
+      type="number"
+      [field]="reviewModel.rating"
+      [class.invalid]="reviewModel.rating().invalid() && reviewModel.rating().touched()"
+    />
+    @for (err of reviewModel.rating().errors(); track err.kind) {
+      <span class="error">{{ err.message }}</span>
+    }
+  </div>
+
+  <button [disabled]="!reviewModel().valid()">Submit</button>
+</div>
+
+<div class="model">
+  <h3>Model Value</h3>
+  <pre><code>{{ model() | json }}</code></pre>
+</div>
