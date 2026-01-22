@@ -1,0 +1,5 @@
+@for (i of stars(); track $index) {
+  <span (click)="setValue(i)" class="material-icons"
+    >{{ value() >= i ? 'star' : 'star_border' }}
+  </span>
+}

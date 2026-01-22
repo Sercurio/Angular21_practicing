@@ -1,0 +1,19 @@
+:host{
+  span{
+    color:goldenrod;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    pointer-events: none;
+      span{
+        color:lightgray
+      }
+  }
+    &.disabled {
+    pointer-events: none;
+      span{
+        cursor:unset;
+      }
+  }
+}

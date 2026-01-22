@@ -1,0 +1,36 @@
+@if (submittedSuccessfully()) {
+  <div class="success-box">Form was submitted successfully!</div>
+}
+<div class="form">
+  <h3>Dinner Review Form</h3>
+  <app-field label="Username">
+    <input type="text" [field]="reviewForm.username" />
+  </app-field>
+  <app-field label="Role">
+    <select [field]="reviewForm.role">
+      <option value="user">User</option>
+      <option value="author">Author</option>
+      <option value="chef">Chef</option>
+    </select>
+  </app-field>
+  <app-field label="Email">
+    <input type="email" [field]="reviewForm.email" />
+  </app-field>
+  <app-field label="Description">
+    <textarea [field]="reviewForm.description"></textarea>
+  </app-field>
+
+  <app-review-item-form [field]="reviewForm.food" header="Food"></app-review-item-form>
+  <app-review-item-form [field]="reviewForm.service" header="Service"></app-review-item-form>
+
+  @if (reviewForm().submitting()) {
+    <div>Please wait...</div>
+  }
+
+  <button (click)="onSubmit()">Submit</button>
+</div>
+
+<div class="model">
+  <h3>Model Value</h3>
+  <pre><code>{{ model() | json }}</code></pre>
+</div>
